@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+  <style>
+    .banner {
+      width: 958px;
+      height: 450px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hot {
+      height: 450px;
+      display: flex;
+      position: absolute;
+      -webkit-padding-start: 0;
+    }
+
+    .hot li {
+      width: 958px;
+      height: 450px;
+      list-style: none;
+    }
+
+    .hot li img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .dot {
+      width: 100px;
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      top: 410px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dot li {
+      list-style: none;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(240, 235, 235, 0.4);
+    }
+
+    .dot li:hover {
+      cursor: pointer;
+    }
+
+    .dot .on {
+      background: white;
+    }
+
+    .prev {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      color: white;
+      padding: 5px;
+      transform: translateY(-50%);
+    }
+
+    .prev:hover {
+      background: #ccc;
+      cursor: pointer;
+    }
+
+    .next {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      color: white;
+      padding: 5px;
+      transform: translateY(-50%);
+    }
+
+    .next:hover {
+      background: #ddd;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner">
+    <ul class="hot">
+      <li><img src="img/background.jpg" alt=""></li>
+      <li><img src="img/bofangbackground.jpg" alt=""></li>
+      <li><img src="img/historybackground.jpg" alt=""></li>
+      <li><img src="img/register.jpg" alt=""></li>
+      <li><img src="img/userbackground.jpg" alt=""></li>
+    </ul>
+    <ul class="dot">
+      <li class="on"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <div class="arrow">
+      <span class="prev">&lt;</span>
+      <span class="next">&gt;</span>
+    </div>
+  </div>
+  <script>
+    var width = 958;
+    $(function () {
+      const firstimg = $('.hot li').first().clone();
+      $('.hot').append(firstimg).width($('.hot li').length * width);
+    })
+    var timer = null;
+    var delay = 2000;
+    timer = setInterval(imgChange, delay);
+    var i = 0;
+    function imgChange() {
+      ++i;
+      isCrack();
+      dotChange();
+    }
+    function isCrack() {
+      if (i == $('.hot li').length) {
+        i = 1;
+        $('.hot').css({ left: 0 })
+      }
+      $('.hot').stop().animate({ left: -i * width }, 400);
+    }
+    function dotChange() {
+      if (i == $('.hot li').length - 1) {
+        $('.dot li').eq(0).addClass('on').siblings().removeClass('on');
+      }
+      $('.dot li').eq(i).addClass('on').siblings().removeClass('on');
+    }
+    $('.dot li').on('click mouseover', function () {
+      i = $(this).index();
+      $('.hot').stop().animate({ left: -i * width }, 400);
+      dotChange();
+    })
+    $('.next').click(function () {
+      imgChange();
+    })
+    $('.prev').on('click', function () {
+      i--;
+      if (i == -1) {
+        i = $('.hot li').length - 2
+        $('.hot').stop().animate({ left: -i * width }, 400);
+      }
+      $('.hot').stop().animate({ left: -i * width }, 400);
+      dotChange();
+    })
+  </script>
+</body>
+
+</html>

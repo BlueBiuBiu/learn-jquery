@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+  <style>
+    .box {
+      display: flex;
+      border: 1px solid orange;
+      width: 450px;
+      justify-content: space-around;
+      margin: 0 auto;
+    }
+    .red {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    .green {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+    .yello {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+    }
+    .blue {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="red"></div>
+    <div class="green"></div>
+    <div class="yello"></div>
+    <div class="blue"></div>
+  </div>
+  <script>
+    $('.box div').fadeTo(2000,0.2);
+    $('.box div').hover(function(){
+      $(this).fadeTo(1,1);
+    },function(){
+      $(this).fadeTo(1,0.2);
+    });
+  </script>
+</body>
+</html>

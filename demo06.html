@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+</head>
+<body>
+  <div>移入/移出</div>
+  <div class="two">移入/移出</div>
+  <Script>
+/*     $('div').on('mouseover mouseout', function(){
+      console.log('鼠标移入或移出');
+    })
+    $('.two').on({
+      mouseover: function(){
+        console.log('移入');
+      },
+      mouseout: function(){
+        console.log('移出');
+      }
+    }) */
+    $('body').on('click','span',function(){
+      console.log('收到');
+    })
+    $('body').append('<span>测试</span>');
+    $('div').hover(function(){
+      console.log('移入');
+    },function(){
+      console.log('移出');
+    })
+  </Script>
+</body>
+</html>

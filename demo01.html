@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+  <style>
+    .wrap {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="fold">
+    <ul>
+      <li>
+        <a href="#">信息管理</a>
+        <ul class="wrap">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">商品管理</a>
+        <ul class="wrap">
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">用户管理</a>
+        <ul class="wrap">
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <script>
+    $('#fold>ul>li:first').find('.wrap').css({display: 'block'});
+    $('#fold>ul>li').click(function(){
+      $(this).siblings('li').find('.wrap').css({display: 'none'});
+      $(this).find('.wrap').css({display: 'block'});
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+</head>
+<body>
+  <p>用户名称: <input type="text" name='username'></p>
+  <p>电子邮箱: <input type="text" name='email'></p>
+  <p>手机号码: <input type="text" name='tel'></p>
+  <script>
+    $('input[type=text]').focus(function(){
+      const tips = $('<span></span>');
+      tips.text('按要求输入');
+      $('input:focus').after(tips);
+    })
+    $('input[type=text]').blur(function(){
+      $(this).next().remove();
+    })
+  </script>
+</body>
+</html>
